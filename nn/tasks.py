@@ -1612,12 +1612,7 @@ def parse_model(d, ch, verbose=True):
             C2fCIB,
             A2C2f,
             CSCB,
-            DynamicConv,
-            C3k2_LA,
-            AtD,
-            LCM,
             C2fCIB_v2,
-
         }
     )
     repeat_modules = frozenset(  # modules with 'repeat' arguments
@@ -1637,7 +1632,6 @@ def parse_model(d, ch, verbose=True):
             C2fCIB,
             C2PSA,
             A2C2f,
-            C3k2_LA,
             C2fCIB_v2,
         }
     )
@@ -1726,13 +1720,7 @@ def parse_model(d, ch, verbose=True):
             c2 = args[0]
             c1 = ch[f]
             args = [*args[1:]]
-        elif m is CBAM:  # todo 源码修改 （增加了elif）
-            """
-            ch[f]:上一层的
-            args[0]:第0个参数
-            c1:输入通道数
-            c2:输出通道数
-            """
+        elif m is CBAM:
             c1, c2 = ch[f], args[0]
             # print("ch[f]:",ch[f])
             # print("args[0]:",args[0])
